@@ -1,3 +1,5 @@
+import java.util.Map;
+
 public class MaxCategory {
     private String category;
     private int sum;

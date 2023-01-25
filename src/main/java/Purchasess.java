@@ -9,7 +9,7 @@ public class Purchasess {
         this.sum = sum;
     }
 
-    public boolean getTitle() {
+    public String getTitle() {
         return title;
     }
 

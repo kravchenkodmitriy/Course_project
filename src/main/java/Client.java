@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Client {
-    private static final int PORT = 8989;
+    private static final int PORT = 8080;
     private static final String HOST = "localhost";
 
     public static void main(String[] args) throws IOException{
@@ -28,14 +28,16 @@ public class Client {
                     String product = scannerReader[0];
                     String date = todaysDate();
                     int sum = Integer.parseInt(scannerReader[1]);
+
+                    System.out.println("{\"title\": \"" + product + "\", \"date\": \"" + date + "\", " + "\"sum\": " + sum + "}");
                 } else {
-                    System.out.println("Ввели не верно!");
+                    System.out.println("Не верный формат ввода!");
                 }
             }
         }
     }
     public static String todaysDate() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.mm.dd");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         LocalDateTime timeNow = LocalDateTime.now();
         return dateTimeFormatter.format(timeNow);
     }
