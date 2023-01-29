@@ -77,5 +77,7 @@ public class FileProcessing implements Serializable {
         }
         return moreCommon;
     }
-
-}
+    public FileProcessing(){
+        processingJson = new HashMap<>();
+        processingTsv = new HashMap<>();
+    }
