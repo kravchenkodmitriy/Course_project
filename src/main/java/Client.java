@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Client {
-    private static final int PORT = 8080;
-    private static final String HOST = "localhost";
+    private static final int PORT = 8989;
+    private static final String HOST = "127.0.0.1";
 
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
         while (true) {
             try (
                     Socket clientSocket = new Socket(HOST, PORT);
@@ -36,6 +36,7 @@ public class Client {
             }
         }
     }
+
     public static String todaysDate() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         LocalDateTime timeNow = LocalDateTime.now();
