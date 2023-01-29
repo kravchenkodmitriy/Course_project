@@ -9,19 +9,24 @@ public class FileProcessing implements Serializable {
     protected Map<String, String> processingTsv;
     protected Map<String, Category> processingJson;
 
-    public void readTsv() throws FileNotFoundException{
+    public FileProcessing() {
+        processingJson = new HashMap<>();
+        processingTsv = new HashMap<>();
+    }
+
+    public void readTsv() throws FileNotFoundException {
 
         File fileTsv = new File("categories.tsv");
         Scanner scanner = new Scanner(fileTsv);
 
-        while (scanner.hasNextLine()){
+        while (scanner.hasNextLine()) {
             String feild = scanner.nextLine();
             String[] separator = feild.split("\t");
 
             Category currentCategory;
             String productName = separator[0];
             String categoryName = separator[1];
-            if (processingJson.containsKey(categoryName)){
+            if (processingJson.containsKey(categoryName)) {
                 currentCategory = processingJson.get(categoryName);
             } else {
                 currentCategory = new Category(categoryName);
@@ -34,14 +39,14 @@ public class FileProcessing implements Serializable {
     }
 
 
-    public void readJson(Purchasess purchasess){
-        if (processingTsv.containsKey(purchasess.title)){
+    public void readJson(Purchasess purchasess) {
+        if (processingTsv.containsKey(purchasess.title)) {
             Category sum = processingJson.get(processingTsv.get(purchasess.title));
             sum.wholeAmount(purchasess);
         } else {
 
             Category anotherCategory;
-            if (processingJson.containsKey("другое")){
+            if (processingJson.containsKey("другое")) {
                 anotherCategory = processingJson.get("другое");
             } else {
                 anotherCategory = new Category("другое");
@@ -55,25 +60,22 @@ public class FileProcessing implements Serializable {
         System.out.println("Товар \n" + purchasess.title + "общей суммой" + purchasess.sum + "добавлен");
     }
 
-    public String stringToJson(){
+    public String stringToJson() {
         Category category = valueMax();
         return "\"maxCategory\": {" + "    \"category\": \"" + category.getCategoryName() + "\"," + "    \"sum\": \"" + category.getSum() + "\"" + "  }";
     }
 
-    public Category valueMax(){
+    public Category valueMax() {
         int lagreSum = Integer.MIN_VALUE;
         Category moreCommon = null;
 
         for (Map.Entry<String, Category> entry : processingJson.entrySet()) {
-            if (entry.getValue().getSum() >= lagreSum){
+            if (entry.getValue().getSum() >= lagreSum) {
                 lagreSum = entry.getValue().getSum();
                 moreCommon = entry.getValue();
             }
         }
         return moreCommon;
     }
-//    public FileProcessing(){
-//        processingJson = new HashMap<>();
-//        processingTsv = new HashMap<>();
-//    }
+
 }

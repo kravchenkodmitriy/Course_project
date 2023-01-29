@@ -10,12 +10,12 @@ import java.net.Socket;
 public class Main {
 
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(8080);) { // стартуем сервер один(!) раз
+        try (ServerSocket serverSocket = new ServerSocket(8989);) {
             Gson gson = new Gson();
 
             FileProcessing fileProcessing = new FileProcessing();
-            fileProcessing.readJson(null);
-            while (true) { // в цикле(!) принимаем подключения
+            fileProcessing.readTsv();
+            while (true) {
                 try (
                         Socket socket = serverSocket.accept();
                         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

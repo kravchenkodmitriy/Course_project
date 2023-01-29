@@ -9,6 +9,7 @@ public class Purchasess {
         this.sum = sum;
     }
 
+
     public String getTitle() {
         return title;
     }
