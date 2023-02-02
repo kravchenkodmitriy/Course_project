@@ -81,3 +81,4 @@ public class FileProcessing implements Serializable {
         processingJson = new HashMap<>();
         processingTsv = new HashMap<>();
     }
+}
