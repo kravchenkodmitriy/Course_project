@@ -9,10 +9,6 @@ public class FileProcessing implements Serializable {
     protected Map<String, String> processingTsv;
     protected Map<String, Category> processingJson;
 
-    public FileProcessing() {
-        processingJson = new HashMap<>();
-        processingTsv = new HashMap<>();
-    }
 
     public void readTsv() throws FileNotFoundException {
 
@@ -76,6 +72,11 @@ public class FileProcessing implements Serializable {
             }
         }
         return moreCommon;
+    }
+
+    public FileProcessing(){
+        processingJson = new HashMap<>();
+        processingTsv = new HashMap<>();
     }
 
 }
