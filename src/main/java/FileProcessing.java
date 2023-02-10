@@ -73,16 +73,10 @@ public class FileProcessing implements Serializable {
         }
         return moreCommon;
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 7503a27919bd9ed3cb4aaab646c6869267f8d1b4
     public FileProcessing(){
         processingJson = new HashMap<>();
         processingTsv = new HashMap<>();
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> 7503a27919bd9ed3cb4aaab646c6869267f8d1b4
 }
